@@ -348,7 +348,8 @@ export default class MTableBodyRow extends React.Component {
     const size = CommonValues.elementSize(this.props);
     const renderColumns = this.renderColumns();
     if (this.props.options.selection) {
-      renderColumns.splice(0, 0, this.renderSelectionColumn());
+      const selectionIndex = this.props.options.selectionPosition === 'last' ? renderColumns.length : 0;
+      renderColumns.splice(selectionIndex, 0, this.renderSelectionColumn());
     }
     if (
       this.props.actions &&
