@@ -288,7 +288,9 @@ export class MTableHeader extends React.Component {
   render() {
     const headers = this.renderHeader();
     if (this.props.hasSelection) {
-      headers.splice(0, 0, this.renderSelectionHeader());
+      const selectionIndex =
+        this.props.options.selectionPosition === "last" ? headers.length : 0;
+      headers.splice(selectionIndex, 0, this.renderSelectionHeader());
     }
 
     if (this.props.showActionsColumn) {
