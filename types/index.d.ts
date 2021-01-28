@@ -349,6 +349,7 @@ export interface Options<RowData extends object> {
   searchFieldVariant?: "standard" | "filled" | "outlined";
   searchAutoFocus?: boolean;
   selection?: boolean;
+  selectionPosition?: number | "last";
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
   tableLayout?: "auto" | "fixed";
