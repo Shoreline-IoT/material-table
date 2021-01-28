@@ -509,7 +509,9 @@ class App extends Component {
                     headerSelectionProps: {
                       color: "primary",
                     },
-                    selection: false,
+                    paging: false,
+                    selection: true,
+                    selectionPosition: "last",
                     selectionProps: (rowData) => {
                       rowData.tableData.disabled = rowData.name === "A1";
 
