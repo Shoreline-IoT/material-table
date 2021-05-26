@@ -86,15 +86,24 @@ export default class DataManager {
         id: index,
       };
 
+      /* Below block is causing unwanted css calculations.
       if (columnDef.tableData.width !== undefined) {
         usedWidth.push(columnDef.tableData.width);
+      } */
+      if (columnDef.width !== undefined) {
+        usedWidth.push(columnDef.width);
       }
 
       return columnDef;
     });
 
     usedWidth = "(" + usedWidth.join(" + ") + ")";
+    /* This section is producing unwanted css calculation which is responsible for freezing browser. 
+       Hence commenting it till we get an appropriate fix */
     undefinedWidthColumns.forEach((columnDef) => {
+      if (columnDef.tableData.width.startsWith("calc")) {
+        return;
+      }
       columnDef.tableData.width = columnDef.tableData.initialWidth = `calc((100% - ${usedWidth}) / ${undefinedWidthColumns.length})`;
     });
   }
