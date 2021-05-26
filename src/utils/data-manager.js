@@ -101,7 +101,10 @@ export default class DataManager {
     /* This section is producing unwanted css calculation which is responsible for freezing browser. 
        Hence commenting it till we get an appropriate fix */
     undefinedWidthColumns.forEach((columnDef) => {
-      if (columnDef.tableData.width.startsWith("calc")) {
+      if (
+        columnDef.tableData.width &&
+        columnDef.tableData.width.startsWith("calc")
+      ) {
         return;
       }
       columnDef.tableData.width = columnDef.tableData.initialWidth = `calc((100% - ${usedWidth}) / ${undefinedWidthColumns.length})`;
